@@ -1,0 +1,180 @@
+/* IBM Plex Sans – Thin (100) */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('/fonts/IBMPlexSans-Thin.ttf') format('truetype');
+}
+
+/* IBM Plex Sans – Extra Light (200) */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('/fonts/IBMPlexSans-ExtraLight.ttf') format('truetype');
+}
+
+/* IBM Plex Sans – Light (300) */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/IBMPlexSans-Light.ttf') format('truetype');
+}
+
+/* IBM Plex Sans – Regular (400) */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/IBMPlexSans-Regular.ttf') format('truetype');
+}
+
+/* IBM Plex Sans – Medium (500) */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/IBMPlexSans-Medium.ttf') format('truetype');
+}
+
+/* IBM Plex Sans – SemiBold (600) */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/IBMPlexSans-SemiBold.ttf') format('truetype');
+}
+
+/* IBM Plex Sans – Bold (700) */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/IBMPlexSans-Bold.ttf') format('truetype');
+}
+
+:root{
+    --header-color:#342AB6;
+    --body-color:#351FB7;
+    --navigation-bakcground-color:#9A8FDB;
+
+    --main-light-color:#ffffff;
+    --main-dakr-color:#000;
+    
+}
+
+
+body {
+  
+  background-color:var(--body-color);
+  font-family: 'IBM Plex Sans', sans-serif;
+  height: 100vh;
+  margin: 0 0;
+    
+    
+
+    main{
+      height: 100%;
+      background-color: var(--main-light-color);
+      margin-left: 230px  ;
+      margin-right: 10%;
+    
+    
+      h1{
+        margin: 0;
+      }
+      
+    }
+}
+
+
+header{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  z-index: 9999;
+  background-color: var(--header-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+  img{
+    height: 80%;
+    margin: 0 0 0 10%;
+  }
+
+}
+
+nav{
+  padding-top: 60px;
+  background-color: var(--navigation-bakcground-color);
+  height: 100%;
+  width: 230px;
+  position: fixed;
+  left: 0;
+  margin-left: 10%;
+
+
+  .nav-buttons{
+    color:var(--main-dakr-color);
+    text-decoration: none;
+  }
+
+  ul{
+    list-style-type: none;
+    padding:0;
+
+    li{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 0 0 20px;
+      gap: 5px;
+      
+      &:hover{
+      background-color: var(--main-light-color);
+      }
+    }
+  }
+
+  .divider{
+    height: 1px;
+    background-color: white;
+    opacity: 0.3;
+  }
+
+  svg{
+      width: 15px;
+      height: 15px;
+  }
+}
+
+
+.short-cuts{
+    background-color: var(--main-light-color);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    background: #fff;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+
+     ul{
+      list-style-type: none;
+
+      li{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+    } 
+}
