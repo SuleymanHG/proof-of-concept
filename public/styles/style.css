@@ -84,7 +84,6 @@ body {
   grid-row-gap: 0px; 
   background-color:var(--body-color);
   font-family: 'IBM Plex Sans', sans-serif;
-  height: 100vh;
   margin: 0;
   justify-items: center;
   
