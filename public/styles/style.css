@@ -65,30 +65,39 @@
     --header-color:#342AB6;
     --body-color:#351FB7;
     --navigation-bakcground-color:#9A8FDB;
+    --footer-background-color:#2c2c2c;
 
     --main-light-color:#ffffff;
     --main-dakr-color:#000;
+
+    --home-text-color:#3c4858;
+
     
 }
 
 
 body {
   display: grid;
-  grid-template-columns: 230px 1fr;
-  grid-template-rows: 60px 100% 45px;
+  grid-template-columns: 1fr 230px 1070px 1fr;
+  grid-template-rows: 60px 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px; 
   background-color:var(--body-color);
   font-family: 'IBM Plex Sans', sans-serif;
   height: 100vh;
-  margin: 0 0;
+  margin: 0;
+  justify-items: center;
+
+  
     
     
 
     main{
-      grid-area: 2 / 2 / 3 / 3;
+      grid-area: 2 / 3 / 3 / 4;
       background-color: var(--main-light-color);
       overflow-y: auto;
+      width: 1070px;
+    
     
     
       h1{
@@ -100,16 +109,17 @@ body {
 
 
 header{
-  grid-area: 1 / 1 / 2 / 3;
+  grid-area: 1 / 1 / 2 / 5;
   display: flex;
   align-items: center;
   width: 100%;
   height: 60px;
   position: sticky;
-  top: 0;                             /* altijd plakken aan de bovenrand */
+  top: 0;                             
   z-index: 10;
   background-color: var(--header-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  
 
   img{
     height: 80%;
@@ -119,18 +129,23 @@ header{
 }
 
 nav{
-  grid-area: 2 / 1 / 3 / 2;
-  padding-top: 60px;
+  grid-area: 2 / 2 / 3 / 3;
   background-color: var(--navigation-bakcground-color);
-  height: 100%;
   width: 230px;
-  position: fixed;
-  left: 0;
 
+  
 
   .nav-buttons{
+    display: flex;
+    align-items: center;
+    gap: 5px;
     color:var(--main-dakr-color);
     text-decoration: none;
+    z-index: 999999;
+
+    &:hover{
+      background-color: var(--main-light-color);
+      }
   }
 
   ul{
@@ -143,7 +158,7 @@ nav{
       align-items: center;
       padding: 0 0 0 20px;
       gap: 5px;
-      
+
       &:hover{
       background-color: var(--main-light-color);
       }
@@ -192,4 +207,24 @@ footer{
     padding: 0 0 0 0 ;
     list-style-type: none;
   }
+}
+
+
+/* === Homepagina === */
+.home-page{
+  
+  .home-text{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    column-gap: 30px;
+    row-gap: 30px;
+    padding: 20px;
+  }
+
+  p{
+    font-size:1.5em;
+    margin: 0 0;
+    color: var(--home-text-color);
+  }
+
 }
