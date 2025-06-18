@@ -84,6 +84,7 @@ body {
   grid-row-gap: 0px; 
   background-color:var(--body-color);
   font-family: 'IBM Plex Sans', sans-serif;
+  height: 100vh;
   margin: 0;
   justify-items: center;
   
@@ -355,4 +356,72 @@ footer{
 
 #restart:hover {
   background: #ffdb67;
+}
+
+
+
+
+/* === Prikbord pagina */
+.prikbord-pagina {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #ffffff;
+}
+
+.message {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  background: #e5e5ea;
+  line-height: 1.4;
+}
+
+.message:nth-child(odd) {
+  align-self: flex-start;
+  background: #d1f5d3;
+}
+
+.message:nth-child(even) {
+  align-self: flex-end;
+  background: #fff;
+}
+
+.message-form {
+  padding: 0.5rem;
+  background: #fafafa;
+  border-top: 1px solid #ddd;
+}
+
+.message-form form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.message-form input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+}
+
+.message-form button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.message-form button:hover {
+  opacity: 0.9;
 }
