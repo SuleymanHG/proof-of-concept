@@ -1,0 +1,19 @@
+{% render 'partials/head.liquid' %}
+<main class="prikbord-pagina">
+    <div class="chat-container">
+      {% for note in notes %}
+        <div class="message" data-id="{{ note.id }}">
+          {{ note.text }}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Formulier onderaan als chat-input -->
+    <div class="message-form">
+      <form action="/notes" method="POST">
+        <input type="text" name="text" placeholder="Typ een bericht..." autocomplete="off" required />
+        <button type="submit">Verzenden</button>
+      </form>
+    </div>
+{% comment %} {% render 'partials/foot.liquid' %} {% endcomment %}
+</main>
