@@ -1,9 +1,46 @@
 {% render 'partials/head.liquid' %}
-    <main class="game-pagina">
+    
+<main class="game-pagina">
+    <h1>De memory game!</h1>
+    <p>Pogingen: <span id="tries">0</span></p>
+    <div id="game-board" class="grid">
+      {% for member in members %}
+        <!-- Kaart met profielfoto -->
+        <div class="card flipped" data-id="{{ member.id }}" data-type="img">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="/proxy-image?url={{ member.image | url_encode }}" alt="Foto van {{ member.name }}">
+            </div>
+            <div class="card-back">
+                <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.98598 7.92347C14.5538 -0.382993 23.4699 -2.23174 31.8307 3.12885C38.548 7.43577 43.9047 13.084 46.5338 20.8593C48.9753 28.0799 47.4575 34.0044 41.4539 38.5607C33.4783 44.6137 24.4687 48.2199 14.308 48.1986C5.23619 48.1796 0.796185 43.9009 0.0996094 34.4569C0.412819 24.444 3.71805 15.7825 8.98598 7.92347Z" fill="#FBC20F"/>
+                    <circle cx="21.1962" cy="10.3036" r="5.9325" fill="black"/>
+                    <circle cx="21.2909" cy="26.8905" r="5.9325" fill="black"/>
+                    <circle cx="37.7352" cy="26.7011" r="5.9325" fill="black"/>
+                </svg>
+            </div>
+          </div>
+        </div>
+        <!-- Kaart met naam -->
+        <div class="card flipped" data-id="{{ member.id }}" data-type="text">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="card-name">{{ member.name }}</span>
+            </div>
+            <div class="card-back">
+                <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.98598 7.92347C14.5538 -0.382993 23.4699 -2.23174 31.8307 3.12885C38.548 7.43577 43.9047 13.084 46.5338 20.8593C48.9753 28.0799 47.4575 34.0044 41.4539 38.5607C33.4783 44.6137 24.4687 48.2199 14.308 48.1986C5.23619 48.1796 0.796185 43.9009 0.0996094 34.4569C0.412819 24.444 3.71805 15.7825 8.98598 7.92347Z" fill="#FBC20F"/>
+                    <circle cx="21.1962" cy="10.3036" r="5.9325" fill="black"/>
+                    <circle cx="21.2909" cy="26.8905" r="5.9325" fill="black"/>
+                    <circle cx="37.7352" cy="26.7011" r="5.9325" fill="black"/>
+                </svg>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <button id="restart">Opnieuw spelen</button>
+  </main>
 
-        <h1>test</h1>
-
-
-
-        {% render 'partials/foot.liquid' %}
-    </main>
+{% comment %} {% render 'partials/foot.liquid' %} {% endcomment %}
+ 
