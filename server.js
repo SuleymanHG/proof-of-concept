@@ -78,7 +78,7 @@ async function getImageUrl(resourceId) {
 
 // Routes
 app.get('/', (req, res) => res.render('index.liquid'));
-app.get('/login', (req, res) => res.render('login.liquid'));
+app.get('/prikbord', (req, res) => res.render('prikbord.liquid'));
 
 app.get('/game', async (req, res) => {
   try {
