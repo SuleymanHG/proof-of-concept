@@ -228,3 +228,113 @@ footer{
   }
 
 }
+
+.game-pagina {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 30px 20px;
+
+  @media (min-width: 600px) {
+    padding: 30px 50px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 30px 100px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+
+ 
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(6, minmax(120px, 1fr));
+  }
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; 
+  cursor: pointer;
+  perspective: 600px;
+}
+
+.card-inner {
+  transform-origin: center center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 30px;
+  border: 5px solid #FBC20F;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-front {
+  background: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.card-front .card-name {
+  font-size: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.card-back {
+  background: #000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transform: rotateY(0deg);
+}
+
+#restart {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: #FBC20F;
+  color: black;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#restart:hover {
+  background: #ffdb67;
+}
