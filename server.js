@@ -4,21 +4,34 @@ dotenv.config();
 import express from 'express';
 import { Liquid } from 'liquidjs';
 import fetch from 'node-fetch';
+import { createClient } from '@supabase/supabase-js';
+
+// Supabase client initialiseren
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+if (!supabaseUrl || !supabaseKey) {
+  console.error('Supabase URL of Key ontbreekt');
+  process.exit(1);
+}
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+// Voor JSON-parsing als je JSON payloads verwacht
+app.use(express.json());
+
+// Proxy-image route
 app.get('/proxy-image', async (req, res) => {
   const url = req.query.url;
   if (!url) {
     return res.status(400).send('Missing "url" parameter');
   }
   try {
-   
     const upstream = await fetch(url, {
       headers: {
-        'Authorization': `Bearer ${KEY}`,
+        'Authorization': `Bearer ${process.env.KEY}`,
         'Accept': 'image/*'
       }
     });
@@ -34,19 +47,20 @@ app.get('/proxy-image', async (req, res) => {
   }
 });
 
+// Liquid templating engine instellen
 const engine = new Liquid();
 app.engine('liquid', engine.express());
 app.set('views', './views');
 
-const BASE_URL = process.env.BASE_URL;    
-const KEY      = process.env.KEY;
+const BASE_URL = process.env.BASE_URL;
 const GROUP_ID = process.env.GROUP_ID;
-if (!BASE_URL || !KEY || !GROUP_ID) process.exit(1);
+if (!BASE_URL || !GROUP_ID) process.exit(1);
 
+// Helper voor externe JSON fetches
 async function fetchJSON(url) {
   const res = await fetch(url, {
     headers: {
-      "Authorization": `Bearer ${KEY}`,
+      "Authorization": `Bearer ${process.env.KEY}`,
       "Accept":        "application/json"
     }
   });
@@ -78,7 +92,18 @@ async function getImageUrl(resourceId) {
 
 // Routes
 app.get('/', (req, res) => res.render('index.liquid'));
-app.get('/prikbord', (req, res) => res.render('prikbord.liquid'));
+app.get('/prikbord', async (req, res) => {
+  // Haal notities op uit Supabase
+  const { data: notes, error } = await supabase
+    .from('notes')
+    .select('*')
+    .order('created_at', { ascending: true });
+  if (error) {
+    console.error('Fout bij ophalen notes:', error);
+    return res.status(500).send('Database-fout');
+  }
+  res.render('prikbord.liquid', { notes });
+});
 
 app.get('/game', async (req, res) => {
   try {
@@ -108,6 +133,23 @@ app.get('/game', async (req, res) => {
   }
 });
 
-app.post('/', (req, res) => res.redirect(303, '/'));
+// Nieuw: POST route om berichten naar Supabase te sturen
+app.post('/notice-board', async (req, res) => {
+  try {
+    const { textArea } = req.body;
+    const { error } = await supabase
+      .from('notes')
+      .insert([{ message: textArea, created_at: new Date().toISOString() }]);
+    if (error) {
+      console.error('Fout bij INSERT note:', error);
+      return res.status(500).send('Database-fout bij opslaan bericht');
+    }
+    res.redirect(303, '/prikbord');
+  } catch (err) {
+    console.error('Error in POST /notice-board:', err);
+    res.status(500).send('Serverfout');
+  }
+});
+
 app.set('port', process.env.PORT || 8000);
 app.listen(app.get('port'), () => console.log(`Server gestart op http://localhost:${app.get('port')}`));
