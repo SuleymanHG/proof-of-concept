@@ -163,3 +163,33 @@ nav{
 }
 
 
+footer{
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 100px;
+  background-color:var(--footer-background-color) ;
+  color: var(--main-light-color);
+  position: fixed;
+  bottom: 0;
+  width: 1070px;
+ 
+
+  div{
+    padding: 0 50px;
+  }
+
+  a{
+    color: #bababa;
+    text-decoration: none;
+
+    &:hover{
+      color: var(--main-light-color);
+    }
+  }
+
+  ul{
+    padding: 0 0 0 0 ;
+    list-style-type: none;
+  }
+}
