@@ -1,18 +1,32 @@
 {% render 'partials/head.liquid' %}
 <main class="prikbord-pagina">
-    <div class="chat-container">
-        {% for note in notes %}
+  <div class="chat-container">
+    {% if notes.size > 0 %}
+      {% for note in notes %}
         <div class="message" data-id="{{ note.id }}">
-            {{ note.message }}
+          {{ note.message }}
         </div>
-        {% endfor %}
-    </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty-state">
+        <p>Er zijn nog geen berichten op het prikbord.</p>
+        <p>Typ hieronder je eerste bericht!</p>
+      </div>
+    {% endif %}
+  </div>
 
-    <!-- Formulier onderaan als chat-input -->
-    <div class="message-form">
-        <form action="/notice-board" method="POST">
-            <input type="text" name="textArea" placeholder="Typ een bericht..." autocomplete="off" required />
-            <button type="submit">Verzenden</button>
-        </form>
-    </div>
+  <div class="message-form">
+    <form action="/notice-board" method="POST">
+      <input
+        type="text"
+        name="textArea"
+        placeholder="Typ een bericht..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit">Verzenden</button>
+    </form>
+  </div>
 </main>
+
+
