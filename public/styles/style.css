@@ -83,7 +83,7 @@ body {
   display: grid;
   grid-template-columns:1fr;
   grid-template-rows: 60px 1fr;
-  grid-column-gap: 0px;
+  grid-column-gap: 0px; 
   grid-row-gap: 0px; 
   background-color:var(--body-color);
   font-family: 'IBM Plex Sans', sans-serif;
@@ -272,7 +272,10 @@ footer{
   grid-template-columns: repeat(2, minmax(120px, 1fr));
   gap: 2rem;
   margin: 2rem 0;
+  @media (min-width:768px){
     grid-template-columns: repeat(4, minmax(120px, 1fr));
+
+  }
   
 
   @media (min-width: 1024px) {
