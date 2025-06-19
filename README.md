@@ -10,7 +10,8 @@ Ik heb een interactieve Matching Game ontworpen voor gebruik binnen LearningSton
 Dit project bevat 2 hoofd funtionaliteiten, dat is de prikbord functie(of chat functie) en de memory game waar je namen met profiel foto's matched.
 
 ## Memory game 
-![Schermafbeelding 2025-06-19 om 02 42 28](https://github.com/user-attachments/assets/4acd3f94-fa96-4517-a658-96c69b27f667)
+![Schermafbeelding 2025-06-19 om 08 02 16](https://github.com/user-attachments/assets/183eab3d-5cce-4e11-a6e4-f89a9fa89f50)
+
 
 ### 🔧 Uitleg Matching Game Logica (JavaScript)
 
