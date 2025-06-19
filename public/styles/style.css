@@ -75,6 +75,9 @@
     
 }
 
+@view-transition {
+  navigation: auto;
+}
 
 body {
   display: grid;
