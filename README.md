@@ -64,7 +64,7 @@ Deze pagina toont een eenvoudig maar effectief **prikbord** waar deelnemers beri
     
 https://github.com/SuleymanHG/proof-of-concept/blob/b72dbe48b93b8462c10d179f8050a9847775a235/views/prikbord.liquid#L1-L30
 
-#🔌 API- en Database-integraties
+# 🔌 API- en Database-integraties
 
 In dit project is gebruikgemaakt van externe diensten voor data-integratie en opslag:
 
@@ -81,3 +81,4 @@ In dit project is gebruikgemaakt van externe diensten voor data-integratie en op
   - De setup maakt gebruik van Supabase's ingebouwde API voor veilige, snelle data-opslag en -retrieval
 
 
+🚀 [Bekijk de live demo](https://proof-of-concept-x9u5.onrender.com/)
