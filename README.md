@@ -4,14 +4,13 @@
 # Beschrijving
 Ik heb een interactieve Matching Game ontworpen voor gebruik binnen LearningStone-cursussen, met als doel dat trainers deze volledig kunnen configureren naar eigen wens. De trainer kan instellen hoeveel deelnemers meedoen (standaard tot 50), koppels van termen of afbeeldingen invoeren (handmatig of via CSV), een tijdslimiet toevoegen en bepalen of deelnemers na afloop hun score en oplossingen mogen zien. Ook kan er optioneel een prikbord-bericht geplaatst worden met de behaalde resultaten. De game wordt als apart blok toegevoegd aan de cursus en voldoet aan eisen op het gebied van toegankelijkheid (WCAG 2.1 AA), responsive design en gegevensbeveiliging. Het project is schaalbaar en klaar voor toekomstige uitbreidingen zoals voortgangsrapportage en groepsscores.
 
-![Ontwerp zonder titel(3)](https://github.com/user-attachments/assets/aa4e6032-d0ff-4c0e-bb05-23279967fc5c)
+![Ontwerp zonder titel(4)](https://github.com/user-attachments/assets/42241c2d-f9f3-4ca0-85d9-b2bd7fc8eb95)
 
 # Features
 Dit project bevat 2 hoofd funtionaliteiten, dat is de prikbord functie(of chat functie) en de memory game waar je namen met profiel foto's matched.
 
 ## Memory game 
-![Schermafbeelding 2025-06-19 om 08 02 16](https://github.com/user-attachments/assets/183eab3d-5cce-4e11-a6e4-f89a9fa89f50)
-
+![Schermafbeelding 2025-06-19 om 08 03 01](https://github.com/user-attachments/assets/36910e48-fef5-4b87-aad8-4da8abc59182)
 
 ### 🔧 Uitleg Matching Game Logica (JavaScript)
 
