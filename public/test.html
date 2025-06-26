@@ -1,0 +1,637 @@
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearningStone - Training Platform</title>
+    <style>
+        /* IBM Plex Sans – Thin (100) */
+        @font-face {
+          font-family: 'IBM Plex Sans';
+          font-style: normal;
+          font-weight: 100;
+          font-display: swap;
+          src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap') format('truetype');
+        }
+        /* IBM Plex Sans – Extra Light (200) */
+        @font-face {
+          font-family: 'IBM Plex Sans';
+          font-style: normal;
+          font-weight: 200;
+          font-display: swap;
+          src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap') format('truetype');
+        }
+        /* IBM Plex Sans – Light (300) */
+        @font-face {
+          font-family: 'IBM Plex Sans';
+          font-style: normal;
+          font-weight: 300;
+          font-display: swap;
+          src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap') format('truetype');
+        }
+        /* IBM Plex Sans – Regular (400) */
+        @font-face {
+          font-family: 'IBM Plex Sans';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap') format('truetype');
+        }
+        /* IBM Plex Sans – Medium (500) */
+        @font-face {
+          font-family: 'IBM Plex Sans';
+          font-style: normal;
+          font-weight: 500;
+          font-display: swap;
+          src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap') format('truetype');
+        }
+        /* IBM Plex Sans – SemiBold (600) */
+        @font-face {
+          font-family: 'IBM Plex Sans';
+          font-style: normal;
+          font-weight: 600;
+          font-display: swap;
+          src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap') format('truetype');
+        }
+        /* IBM Plex Sans – Bold (700) */
+        @font-face {
+          font-family: 'IBM Plex Sans';
+          font-style: normal;
+          font-weight: 700;
+          font-display: swap;
+          src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap') format('truetype');
+        }
+
+        :root{
+            --header-color:#342AB6;
+            --body-color:#351FB7;
+            --navigation-background-color:#9A8FDB;
+            --footer-background-color:#2c2c2c;
+            --main-light-color:#ffffff;
+            --main-dark-color:#000;
+            --home-text-color:#3c4858;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--body-color);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--header-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--main-light-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .logo svg {
+            margin-right: 0.5rem;
+        }
+
+        .login-btn {
+            background: var(--main-light-color);
+            color: var(--header-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--navigation-background-color);
+            padding-top: 80px;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.mobile-hidden {
+            transform: translateX(-100%);
+        }
+
+        .nav-section {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(52, 42, 182, 0.2);
+        }
+
+        .nav-title {
+            color: var(--header-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(52, 42, 182, 0.15);
+            border-radius: 0.375rem;
+            text-align: center;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: var(--header-color);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin-bottom: 0.25rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(52, 42, 182, 0.2);
+            color: var(--header-color);
+            transform: translateX(5px);
+            font-weight: 600;
+        }
+
+        .nav-item svg {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 80px 2rem 2rem;
+            overflow-y: auto;
+            background: var(--main-light-color);
+            transition: margin-left 0.3s ease;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-content {
+            background: var(--main-light-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-text h1 {
+            color: var(--main-dark-color);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .welcome-text p {
+            color: var(--home-text-color);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .info-text h2 {
+            color: var(--main-dark-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .info-text p {
+            color: var(--home-text-color);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .info-text a {
+            color: var(--header-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .info-text a:hover {
+            text-decoration: underline;
+        }
+
+        .login-instruction {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--header-color);
+        }
+
+        .login-instruction p {
+            color: var(--home-text-color);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--footer-background-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+
+        .footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            margin-left: 1rem;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--main-light-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Overlay for mobile */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .welcome-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                z-index: 1001;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 80px 1rem 4rem;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .logo span {
+                display: none;
+            }
+
+            .login-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            .welcome-content {
+                padding: 1.5rem;
+            }
+
+            .hero-image {
+                height: 200px;
+            }
+
+            .welcome-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .info-text h2 {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.75rem;
+            }
+
+            .main-content {
+                padding: 80px 0.5rem 4rem;
+            }
+
+            .welcome-content {
+                padding: 1rem;
+                margin: 0.5rem;
+                border-radius: 0.5rem;
+            }
+
+            .hero-image {
+                height: 150px;
+                border-radius: 0.5rem;
+            }
+
+            .welcome-text h1 {
+                font-size: 1.25rem;
+            }
+
+            .info-text h2 {
+                font-size: 1.125rem;
+            }
+
+            .welcome-text p, .info-text p {
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                </svg>
+                Hogeschool van Amsterdam
+                <span style="margin-left: 1rem; font-weight: normal; opacity: 0.8;">sandbox</span>
+            </div>
+            <button class="login-btn" onclick="toggleLogin()">Inloggen</button>
+        </div>
+
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="nav-section">
+                <div class="nav-title">HvA 2025</div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-item active" onclick="showSection('welcome')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Welcome
+                </div>
+                
+                <div class="nav-item" onclick="showSection('catalogus')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                    Catalogus
+                </div>
+                
+                <div class="nav-item" onclick="showSection('mijn-catalogus')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                    Mijn catalogus
+                </div>
+                
+                <div class="nav-item" onclick="showSection('mijn-berichten')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    Mijn berichten
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Welcome Section -->
+            <div id="welcome" class="content-section active">
+                <div class="welcome-content">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1000&h=250&fit=crop&crop=center" 
+                         alt="Modern Amsterdam office buildings" class="hero-image">
+                    
+                    <div class="welcome-grid">
+                        <div class="welcome-text">
+                            <h1>Welcome to the public pages of this LearningStone Workspace</h1>
+                            <p>This workspace contains spaces for collaborative or self-paced learning and coaching.</p>
+                            
+                            <div class="login-instruction">
+                                <p>Log in with button above to enter. If you would like to join, just contact us and we'll send you an email invitation.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-text">
+                            <h2>If you want to know more about LearningStone, just</h2>
+                            <p>visit <a href="https://www.learningstone.com" target="_blank">www.learningstone.com</a> or if you need help on specific topics, go to the <a href="#" onclick="showSection('help')">help section</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Sections -->
+            <div id="catalogus" class="content-section">
+                <div class="welcome-content">
+                    <h1>Catalogus</h1>
+                    <p>Browse available courses and learning materials.</p>
+                </div>
+            </div>
+
+            <div id="mijn-catalogus" class="content-section">
+                <div class="welcome-content">
+                    <h1>Mijn catalogus</h1>
+                    <p>Your personal learning catalog and progress.</p>
+                </div>
+            </div>
+
+            <div id="mijn-berichten" class="content-section">
+                <div class="welcome-content">
+                    <h1>Mijn berichten</h1>
+                    <p>Your messages and notifications.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div>Powered by LearningStone</div>
+            <div>
+                <a href="#">Help voor LearningStone test 2</a>
+                <a href="#">Feedback & support</a>
+                <a href="#">Language</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from nav items
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked nav item
+            event.target.closest('.nav-item').classList.add('active');
+            
+            // Close mobile menu if open
+            closeMobileMenu();
+        }
+
+        function toggleLogin() {
+            const loginBtn = document.querySelector('.login-btn');
+            if (loginBtn.textContent === 'Inloggen') {
+                loginBtn.textContent = 'Uitloggen';
+                loginBtn.style.background = '#ef4444';
+                loginBtn.style.color = 'var(--main-light-color)';
+            } else {
+                loginBtn.textContent = 'Inloggen';
+                loginBtn.style.background = 'var(--main-light-color)';
+                loginBtn.style.color = 'var(--header-color)';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.mobile-overlay');
+            
+            sidebar.classList.toggle('mobile-hidden');
+            overlay.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.mobile-overlay');
+            
+            sidebar.classList.add('mobile-hidden');
+            overlay.classList.remove('active');
+        }
+
+        // Add some interactive hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            // Initialize mobile menu as hidden on mobile
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.add('mobile-hidden');
+            }
+            
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(8px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateX(0)';
+                    } else {
+                        this.style.transform = 'translateX(5px)';
+                    }
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    document.getElementById('sidebar').classList.remove('mobile-hidden');
+                    document.querySelector('.mobile-overlay').classList.remove('active');
+                } else {
+                    document.getElementById('sidebar').classList.add('mobile-hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
