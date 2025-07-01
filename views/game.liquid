@@ -1,47 +1,59 @@
 {% render 'partials/head.liquid' %}
+
 <main class="game-pagina">
   <h1>De memory game!</h1>
-  <p>Pogingen: <span id="tries">0</span></p>
+  <p aria-live="polite">Pogingen: <span id="tries">0</span></p>
 
   {% if members and members.size > 0 %}
-    <div id="game-board" class="grid">
-      {% for member in members %}
-        <!-- Kaart met profielfoto -->
-        <div class="card flipped" data-id="{{ member.id }}" data-type="img">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="/proxy-image?url={{ member.image | url_encode }}" alt="Foto van {{ member.name }}">
-            </div>
-            <div class="card-back">
-              <svg width="129" height="130" viewBox="0 0 129 130" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24.0176 21.1455C39.0661 -1.30464 63.1638 -6.30069 85.7607 8.1875C103.916 19.8281 118.394 35.0935 125.5 56.1084C132.099 75.6238 127.997 91.6356 111.771 103.95C90.2145 120.31 65.8632 130.058 38.4014 130C13.8829 129.948 1.88273 118.384 0 92.8594C0.846529 65.7971 9.77963 42.3866 24.0176 21.1455ZM57.2754 56.375C48.4201 56.375 41.2413 63.5539 41.2412 72.4092C41.2412 81.2646 48.42 88.4434 57.2754 88.4434C66.1306 88.4432 73.3096 81.2645 73.3096 72.4092C73.3095 63.554 66.1306 56.3752 57.2754 56.375ZM101.72 55.8623C92.8644 55.8623 85.6856 63.0412 85.6855 71.8965C85.6855 80.7519 92.8643 87.9307 101.72 87.9307C110.575 87.9307 117.754 80.7519 117.754 71.8965C117.754 63.0412 110.575 55.8623 101.72 55.8623ZM57.0186 11.5439C48.1634 11.5442 40.9855 18.723 40.9854 27.5781C40.9854 36.4334 48.1634 43.6121 57.0186 43.6123C65.8739 43.6123 73.0527 36.4335 73.0527 27.5781C73.0526 18.7228 65.8739 11.5439 57.0186 11.5439Z" fill="#FBC20F"/>
-              </svg>
-            </div>
+  <ul id="game-board" class="grid" role="list" aria-label="Memory speelveld">
+    {% for member in members %}
+    <!-- Foto-kaart -->
+    <li role="listitem">
+      <button class="card flipped" type="button" data-id="{{ member.id }}" data-type="img"
+        aria-label="Kaart afbeelding van {{ member.name }}">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="/proxy-image?url={{ member.image | url_encode }}" alt="Foto van {{ member.name }}">
           </div>
-        </div>
-        <!-- Kaart met naam -->
-        <div class="card flipped" data-id="{{ member.id }}" data-type="text">
-          <div class="card-inner">
-            <div class="card-front">
-              <span class="card-name">{{ member.name }}</span>
-            </div>
-            <div class="card-back card-img">
-              <svg width="129" height="130" viewBox="0 0 129 130" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24.0176 21.1455C39.0661 -1.30464 63.1638 -6.30069 85.7607 8.1875C103.916 19.8281 118.394 35.0935 125.5 56.1084C132.099 75.6238 127.997 91.6356 111.771 103.95C90.2145 120.31 65.8632 130.058 38.4014 130C13.8829 129.948 1.88273 118.384 0 92.8594C0.846529 65.7971 9.77963 42.3866 24.0176 21.1455ZM57.2754 56.375C48.4201 56.375 41.2413 63.5539 41.2412 72.4092C41.2412 81.2646 48.42 88.4434 57.2754 88.4434C66.1306 88.4432 73.3096 81.2645 73.3096 72.4092C73.3095 63.554 66.1306 56.3752 57.2754 56.375ZM101.72 55.8623C92.8644 55.8623 85.6856 63.0412 85.6855 71.8965C85.6855 80.7519 92.8643 87.9307 101.72 87.9307C110.575 87.9307 117.754 80.7519 117.754 71.8965C117.754 63.0412 110.575 55.8623 101.72 55.8623ZM57.0186 11.5439C48.1634 11.5442 40.9855 18.723 40.9854 27.5781C40.9854 36.4334 48.1634 43.6121 57.0186 43.6123C65.8739 43.6123 73.0527 36.4335 73.0527 27.5781C73.0526 18.7228 65.8739 11.5439 57.0186 11.5439Z" fill="#FBC20F"/>
-              </svg>
+          <div class="card-back">
+            <svg width="129" height="130" viewBox="0 0 129 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24.0176 21.1455C39.0661 -1.30464 63.1638 -6.30069 85.7607 8.1875C103.916 19.8281 118.394 35.0935 125.5 56.1084C132.099 75.6238 127.997 91.6356 111.771 103.95C90.2145 120.31 65.8632 130.058 38.4014 130C13.8829 129.948 1.88273 118.384 0 92.8594C0.846529 65.7971 9.77963 42.3866 24.0176 21.1455ZM57.2754 56.375C48.4201 56.375 41.2413 63.5539 41.2412 72.4092C41.2412 81.2646 48.42 88.4434 57.2754 88.4434C66.1306 88.4432 73.3096 81.2645 73.3096 72.4092C73.3095 63.554 66.1306 56.3752 57.2754 56.375ZM101.72 55.8623C92.8644 55.8623 85.6856 63.0412 85.6855 71.8965C85.6855 80.7519 92.8643 87.9307 101.72 87.9307C110.575 87.9307 117.754 80.7519 117.754 71.8965C117.754 63.0412 110.575 55.8623 101.72 55.8623ZM57.0186 11.5439C48.1634 11.5442 40.9855 18.723 40.9854 27.5781C40.9854 36.4334 48.1634 43.6121 57.0186 43.6123C65.8739 43.6123 73.0527 36.4335 73.0527 27.5781C73.0526 18.7228 65.8739 11.5439 57.0186 11.5439Z" fill="#FBC20F"/>
+            </svg>
 
-            </div>
           </div>
         </div>
-      {% endfor %}
-    </div>
+      </button>
+    </li>
+
+    <!-- Naam-kaart -->
+    <li role="listitem">
+      <button class="card flipped" type="button" data-id="{{ member.id }}" data-type="text"
+        aria-label="Kaart naam {{ member.name }}">
+        <div class="card-inner">
+          <div class="card-front">
+            <span class="card-name">{{ member.name }}</span>
+          </div>
+          <div class="card-back card-img">
+            <svg width="129" height="130" viewBox="0 0 129 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24.0176 21.1455C39.0661 -1.30464 63.1638 -6.30069 85.7607 8.1875C103.916 19.8281 118.394 35.0935 125.5 56.1084C132.099 75.6238 127.997 91.6356 111.771 103.95C90.2145 120.31 65.8632 130.058 38.4014 130C13.8829 129.948 1.88273 118.384 0 92.8594C0.846529 65.7971 9.77963 42.3866 24.0176 21.1455ZM57.2754 56.375C48.4201 56.375 41.2413 63.5539 41.2412 72.4092C41.2412 81.2646 48.42 88.4434 57.2754 88.4434C66.1306 88.4432 73.3096 81.2645 73.3096 72.4092C73.3095 63.554 66.1306 56.3752 57.2754 56.375ZM101.72 55.8623C92.8644 55.8623 85.6856 63.0412 85.6855 71.8965C85.6855 80.7519 92.8643 87.9307 101.72 87.9307C110.575 87.9307 117.754 80.7519 117.754 71.8965C117.754 63.0412 110.575 55.8623 101.72 55.8623ZM57.0186 11.5439C48.1634 11.5442 40.9855 18.723 40.9854 27.5781C40.9854 36.4334 48.1634 43.6121 57.0186 43.6123C65.8739 43.6123 73.0527 36.4335 73.0527 27.5781C73.0526 18.7228 65.8739 11.5439 57.0186 11.5439Z" fill="#FBC20F"/>
+            </svg>
+
+          </div>
+        </div>
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
   {% else %}
-    <div class="empty-state">
-      <p>Er zijn nog geen spelers om mee te spelen. Voeg eerst leden toe!</p>
-    </div>
+  <div class="empty-state" role="region" aria-live="polite">
+    <p>Er zijn nog geen spelers om mee te spelen. Voeg eerst leden toe!</p>
+  </div>
   {% endif %}
 
-  <button id="restart">Opnieuw spelen</button>
+  <button id="restart" class="restart-btn" type="button">
+    Opnieuw spelen
+  </button>
 </main>
+
 
 {% comment %} {% render 'partials/foot.liquid' %} {% endcomment %}

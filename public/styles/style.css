@@ -253,6 +253,11 @@ footer{
 }
 
 /* === Gamepagina === */
+button{
+    background-color: transparent;
+    border: none;
+}
+
 .card-front {
   position: relative;
   overflow: hidden;
@@ -454,3 +459,6 @@ footer{
 .message-form button:hover {
   opacity: 0.9;
 }
+
+
+
