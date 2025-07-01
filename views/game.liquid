@@ -13,7 +13,7 @@
         aria-label="Kaart afbeelding van {{ member.name }}">
         <div class="card-inner">
           <div class="card-front">
-            <img src="/proxy-image?url={{ member.image | url_encode }}" alt="Foto van {{ member.name }}">
+            <img src="/proxy-image?url={{ member.image | url_encode }}" alt="Foto van {{ member.name }}" loading="lazy" decoding="async">
           </div>
           <div class="card-back">
             <svg width="129" height="130" viewBox="0 0 129 130" fill="none" xmlns="http://www.w3.org/2000/svg">
