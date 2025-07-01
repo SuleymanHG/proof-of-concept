@@ -390,7 +390,13 @@ footer{
 #restart:hover {
   background: #ffdb67;
 }
+.card-img{
+  border-color: #FB0F0F;
 
+  svg path{
+    fill: #FB0F0F !important;
+  }
+}
 
 
 
